@@ -29,9 +29,8 @@ chat_prompt = ChatPromptTemplate.from_messages(
 )
 
 # chain three things: prompt, llm, output parser
+# the three thing has in a good sequence
 # format and run, one variable text
-chain = chat_prompt  | CommaSeparatedListFiveOutputParser() | chat_model
+chain = chat_prompt | chat_model | CommaSeparatedListFiveOutputParser() 
 result = chain.invoke({'text': 'colors'})
 print(result)
-# print(steps)
-# print(parsed)
